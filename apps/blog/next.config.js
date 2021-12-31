@@ -10,6 +10,16 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  // auto redirect for page /about
+  async redirects() {
+    return [
+      {
+        source: '/missing',
+        destination: '/',
+        permanent: true // triggers 308
+      }
+    ]
+  }
 };
 
 module.exports = withNx(nextConfig);

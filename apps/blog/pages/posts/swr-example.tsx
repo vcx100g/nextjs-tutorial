@@ -20,6 +20,8 @@ export default function FirstPost({ ssrData }) {
         <Layout home>
             <Head>
                 <title>SWR Example</title>
+                <meta name="robots" content="all" />
+                <meta name="google" content="notranslate" />
             </Head>
 
             <h1>

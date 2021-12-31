@@ -4,6 +4,7 @@ import Layout, { siteTitle } from '../components/layout';
 import Head from 'next/head'
 import { getSortedPostsData } from './lib/posts'; 
 import Date from '../components/date'
+import Script from 'next/script'
 
 // more blog example for cms, wordpress and etc...
 // https://github.com/vercel/next.js/tree/canary/examples/blog-starter
@@ -39,6 +40,32 @@ export function Index({ allPostsData, ssrData }) {
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
+        <meta name="google" content="nositelinkssearchbox" key="sitelinks" />
+        <meta name="google" content="notranslate" key="notranslate" />
+
+        {/* To de-duplicate pages  */}
+        <link
+          rel="canonical"
+          href="https://example.com/blog/original-post"
+          key="canonical"
+        />
+
+        <meta
+          name="description"
+          content="Check out iPhone 12 XR Pro and iPhone 12 Pro Max. Visit your local store and for expert advice."
+          key="desc"
+        />
+
+      {/* opengraph meta by facebook */}
+      <meta property="og:title" content="Social Title for Cool Page" />
+        <meta
+          property="og:description"
+          content="And a social description for our cool page"
+        />
+        <meta
+          property="og:image"
+          content="https://example.com/images/cool-page.jpg"
+        />
       </Head>
 
       <section className={utilStyles.headingMd}>
@@ -97,6 +124,14 @@ export function Index({ allPostsData, ssrData }) {
           ))}
         </ul>
       </section>
+
+      {/* third party script load */}
+      <div>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=123"
+        />
+      </div>
     </Layout>
   );
 }

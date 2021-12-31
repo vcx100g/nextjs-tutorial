@@ -9,6 +9,8 @@ export default function FirstPost({ ssrData }) {
         <Layout home>
             <Head>
                 <title>First Post</title>
+                <meta name="robots" content="noindex,nofollow" />
+                <meta name="googlebot" content="noindex,nofollow" />
             </Head>
 
             <h1>

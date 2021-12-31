@@ -3,12 +3,13 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Layout from '../../components/layout';
 import * as bcrypt from 'bcrypt'
+import { GetServerSideProps } from 'next'
 
 // server side render
 const saltRounds = 10;
 let originalHash = 's0\\P4$$w0rD';
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   // hash chain
   originalHash = await bcrypt.hash(originalHash, saltRounds)
 
@@ -27,6 +28,8 @@ export default function SSRExample({ ssrData }) {
         <Layout home>
             <Head>
                 <title>SSRExample</title>
+                <meta name="robots" content="all" />
+                <meta name="google" content="nositelinkssearchbox" />
             </Head>
 
             <h1>

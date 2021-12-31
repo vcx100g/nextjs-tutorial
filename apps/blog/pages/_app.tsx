@@ -3,6 +3,10 @@ import Head from 'next/head';
 // import './styles.css';
 import '../styles/global.css'
 
+
+// more convert app to typescript using
+// https://nextjs.org/learn/excel/typescript/nextjs-types
+
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
