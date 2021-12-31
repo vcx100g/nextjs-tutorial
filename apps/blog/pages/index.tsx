@@ -3,7 +3,10 @@ import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
 import Head from 'next/head'
 import { getSortedPostsData } from './lib/posts'; 
+import Date from '../components/date'
 
+// more blog example for cms, wordpress and etc...
+// https://github.com/vercel/next.js/tree/canary/examples/blog-starter
 
 // fast simple 
 // import useSWR from 'swr'
@@ -67,16 +70,29 @@ export function Index({ allPostsData, ssrData }) {
         </Link>
       </div>
 
+      <div>
+        Dynamic routing{' '}
+        <Link href="/posts/ssg-ssr">
+          <a>this page</a>
+        </Link>{' '}
+        and{' '}
+        <Link href="/posts/pre-rendering">
+          <a>this page!</a>
+        </Link>
+      </div>
+
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
             </li>
           ))}
         </ul>
